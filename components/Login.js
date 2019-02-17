@@ -3,6 +3,9 @@ import { Text, View, StyleSheet, Image, KeyboardAvoidingView } from 'react-nativ
 import LoginForm from './LoginForm';
 
 export default class Login extends React.Component {
+	static navigationOptions = {
+		header: null,
+	}
   render() { 
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -11,7 +14,7 @@ export default class Login extends React.Component {
 			
 				<Image 
 					style={styles.logo}
-					source={require('./Dinner.jpg')} 
+					source={require('../Dinner.png')} 
 					/>
 					<Text style={styles.title}>Dinner Today</Text>
 			</View>
