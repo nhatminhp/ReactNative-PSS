@@ -1,9 +1,34 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { getUserInfo } from '../services/FetchLogin';
 
 export default class LoginForm extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			username: '',
+			// Password: '',
+		}
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+	handleChange(e) {
+		this.setState({
+			username: e.nativeEvent.text
+		});
+	}
+
+	handleSubmit() {
+		getUserInfo(this.state.username)
+          .then((res) => {
+              Alert.alert(res);
+        });
+	}
+	
+
 	render() {
 		const Divider = (props) => {
 			return <View {...props}>
@@ -24,6 +49,7 @@ export default class LoginForm extends React.Component {
 					autoCorrect={false}
 					autoCapitalize="none"
 					style={styles.input}
+					onChange={this.handleChange}
 					/>
 				<TextInput
 					placeholder="Password"
@@ -34,7 +60,9 @@ export default class LoginForm extends React.Component {
 					style={styles.input}
 					/>
 				
-				<TouchableOpacity style={styles.buttonContainer}>
+				<TouchableOpacity 
+					style={styles.buttonContainer}
+					onPress={this.handleSubmit}>
 					<Text style={styles.buttonText}>LOGIN</Text>
 				</TouchableOpacity>
 				<Divider style={styles.divider}></Divider>
