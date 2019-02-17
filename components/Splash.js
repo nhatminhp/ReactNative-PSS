@@ -15,11 +15,11 @@ export default class Spash extends Component {
         Animated.sequence([
             Animated.timing(this.state.logoOpacity, {
                 toValue: 1,
-                duration: 1000,
+                duration: 700,
             }),
             Animated.timing(this.state.sloganMarginTop, {
                 toValue: 10,
-                duration: 1000,
+                duration: 700,
             })
         ]).start(() => {
             //End of animation
@@ -43,7 +43,7 @@ export default class Spash extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#3498db',
+        backgroundColor: 'white',
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',

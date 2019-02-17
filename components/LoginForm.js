@@ -42,7 +42,7 @@ export default class LoginForm extends React.Component {
 				<TextInput
 					placeholder="Username or Email"
 					textContentType="emailAddress"
-					placeholderTextColor="rgba(255,255,255,0.7)"
+					placeholderTextColor="#4d5054"
 					returnKeyType="next"
 					onSubmitEditing={() => this.passwordInput.focus()}
 					keyboardType="email-address"
@@ -53,7 +53,7 @@ export default class LoginForm extends React.Component {
 					/>
 				<TextInput
 					placeholder="Password"
-					placeholderTextColor="rgba(255,255,255,0.7)"
+					placeholderTextColor="#4d5054"
 					secureTextEntry={true}
 					returnKeyType="go"
 					ref={(input) => this.passwordInput = input}
@@ -70,6 +70,10 @@ export default class LoginForm extends React.Component {
 				style={styles.facebookButton}>
 					<Text style={styles.buttonText}>Login with Facebook</Text>
 				</FontAwesome.Button>
+				<TouchableOpacity 
+					style={styles.toSignupButton}>
+					<Text style={styles.buttonText}>Sign Up</Text>
+				</TouchableOpacity>
 			</View>
 		);
 	}
@@ -81,14 +85,14 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		height: 40,
-		backgroundColor: 'rgba(255,255,255,0.2)',
+		backgroundColor: '#dae3ea',
 		marginBottom: 20,
-		color: '#FFF',
+		color: '#4d5054',
 		paddingHorizontal: 10,
 		borderRadius: 6,
 	},
 	buttonContainer: {
-		backgroundColor: '#2980b9',
+		backgroundColor: '#676a6d',
 		paddingVertical: 15,
 		borderRadius: 6,
 		// marginBottom: 10,
@@ -99,6 +103,12 @@ const styles = StyleSheet.create({
 		borderRadius: 6,
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	toSignupButton: {
+		backgroundColor: '#d13e54',
+		paddingVertical: 15,
+		borderRadius: 6,
+		marginTop: 10
 	},
 	buttonText: {
 		textAlign: 'center',
