@@ -53,7 +53,7 @@ export default class Signup extends React.Component {
             <View style={styles.logoContainer}>
 				<Image
 					style={styles.logo}
-					source={require('../Dinner.png')}
+					source={require('../../Dinner.png')}
 					/>
 			</View>
             <View style={styles.inputContainer}>

@@ -1,9 +1,9 @@
-import Login from "./Login";
-import Splash from "./Splash";
-import Search from "./Search";
-import LoginForm from "./LoginForm";
-import Gateway from "./Gateway";
-import Signup from './Signup';
+import Login from "./Login/Login";
+import Splash from "./Splash/Splash";
+import Search from "./Search/Search";
+import LoginForm from "./Login/LoginForm";
+import Gateway from "./Gateway/Gateway";
+import Signup from './Signup/Signup';
 import {createStackNavigator, createAppContainer} from "react-navigation";
 
 const AppNavigator = createStackNavigator({

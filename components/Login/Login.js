@@ -14,7 +14,7 @@ export default class Login extends React.Component {
 			
 				<Image 
 					style={styles.logo}
-					source={require('../Dinner.png')} 
+					source={require('../../Dinner.png')} 
 					/>
 			</View>
 			<View style={styles.formContainer}>

@@ -29,7 +29,7 @@ export default class Spash extends Component {
     
     render() {
         return <View style={styles.container}>
-            <Animated.Image source={require('../Dinner.png')}
+            <Animated.Image source={require('../../Dinner.png')}
                 style={{...styles.logo, opacity: this.state.logoOpacity}}>
                 
             </Animated.Image>
