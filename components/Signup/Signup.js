@@ -24,10 +24,10 @@ export default class Signup extends React.Component {
     }
 
     validateAllParams = () => {
-        if (!this.state.email 
-            || !this.state.firstName 
-            || !this.state.lastName 
-            || !this.state.password 
+        if (!this.state.email
+            || !this.state.firstName
+            || !this.state.lastName
+            || !this.state.password
             || !this.state.confirmPassword
             ) {
             return false
@@ -50,10 +50,10 @@ export default class Signup extends React.Component {
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
-            <View style={styles.logoContainer}>			
-				<Image 
+            <View style={styles.logoContainer}>
+				<Image
 					style={styles.logo}
-					source={require('../Dinner.png')} 
+					source={require('../Dinner.png')}
 					/>
 			</View>
             <View style={styles.inputContainer}>
@@ -119,7 +119,7 @@ export default class Signup extends React.Component {
                 <Text style={styles.signupText}>Register</Text>
             </TouchableOpacity>
             </View>
-            
+
             </KeyboardAvoidingView>
         );
     }
