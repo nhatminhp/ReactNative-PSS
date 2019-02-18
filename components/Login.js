@@ -16,7 +16,6 @@ export default class Login extends React.Component {
 					style={styles.logo}
 					source={require('../Dinner.png')} 
 					/>
-					<Text style={styles.title}>Dinner Today</Text>
 			</View>
 			<View style={styles.formContainer}>
 				<LoginForm />
@@ -29,7 +28,7 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#3498db'
+		backgroundColor: 'white'
 	},
 	logoContainer: {
 		borderRadius: 6,
@@ -38,13 +37,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	logo: {
-		width: 150,
-		height: 150
+		width: 200,
+		height: 200
 	},
-	title: {
-	color: '#ffffff',
-	fontSize: 28,
-	marginTop: 10,
-	textAlign: 'center',
-	}
 });
