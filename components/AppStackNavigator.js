@@ -3,6 +3,7 @@ import Splash from "./Splash";
 import Test from "./Test";
 import LoginForm from "./LoginForm";
 import Gateway from "./Gateway";
+import Signup from './Signup';
 import {createStackNavigator, createAppContainer} from "react-navigation";
 
 const AppNavigator = createStackNavigator({
@@ -22,9 +23,12 @@ const AppNavigator = createStackNavigator({
     Gateway: {
         screen: Gateway
     },
+    Signup: {
+        screen: Signup
+    }
 }, {
     // settings
-    initialRouteName: "Gateway"
+    initialRouteName: "Splash"
 })
 
 export default createAppContainer(AppNavigator)

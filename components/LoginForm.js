@@ -49,8 +49,7 @@ export default class LoginForm extends React.Component {
                                 AsyncStorage.multiSet([
                                   ["token", responseJson.comment_id.toString()],
                                 ])
-                                Alert.alert(responseJson.comment_id.toString());
-                                this.props.screenProps.rootNavigation.navigate('Home')
+                                this.props.navigation.navigate('Gateway')
                             })
                             .catch((error) => {
                               return Alert.alert(error);
@@ -101,7 +100,7 @@ export default class LoginForm extends React.Component {
 					<Text style={styles.buttonText}>Login with Facebook</Text>
 				</FontAwesome.Button>
 				<TouchableOpacity 
-					style={styles.toSignupButton}>
+					style={styles.toSignupButton} onPress={() => this.props.navigation.navigate('Signup')}>
 					<Text style={styles.buttonText}>Sign Up</Text>
 				</TouchableOpacity>
 			</View>

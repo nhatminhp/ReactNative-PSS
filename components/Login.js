@@ -18,7 +18,7 @@ export default class Login extends React.Component {
 					/>
 			</View>
 			<View style={styles.formContainer}>
-				<LoginForm />
+				<LoginForm navigation ={this.props.navigation}> </LoginForm>
 			</View>
       </KeyboardAvoidingView>
     );
