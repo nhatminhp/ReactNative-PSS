@@ -1,31 +1,60 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, Alert, AsyncStorage } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { getUserInfo } from '../services/FetchLogin';
+import {createStackNavigator} from 'react-navigation';
 
 export default class LoginForm extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: '',
-			// Password: '',
+			email: '',
+			password: '',
 		}
-		this.handleChange = this.handleChange.bind(this);
+		this.handleChangeEmail = this.handleChangeEmail.bind(this);
+		this.handleChangePassword = this.handleChangePassword.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
-	handleChange(e) {
+	handleChangeEmail(e) {
 		this.setState({
-			username: e.nativeEvent.text
+			email: e.nativeEvent.text
+		});
+	}
+	handleChangePassword(e) {
+		this.setState({
+			password: e.nativeEvent.text
 		});
 	}
 
-	handleSubmit() {
-		getUserInfo(this.state.username)
-          .then((res) => {
-              Alert.alert(res);
-        });
+	async handleSubmit() {
+		fetch('http://wonderdance-interaction.duckdns.org/comment', {
+                      method: 'POST',
+                      headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+        //                email: email,
+        //                password: password,
+                          user_id: 1,
+                          video_id: 1,
+                          data: {
+                                content: '123'
+                          },
+                      })
+                    }).then((response) => response.json())
+                            .then((responseJson) => {
+                                AsyncStorage.multiSet([
+                                  ["token", responseJson.comment_id.toString()],
+                                ])
+                                Alert.alert(responseJson.comment_id.toString());
+                                this.props.screenProps.rootNavigation.navigate('Home')
+                            })
+                            .catch((error) => {
+                              return Alert.alert(error);
+                            });
 	}
 	
 
@@ -49,7 +78,7 @@ export default class LoginForm extends React.Component {
 					autoCorrect={false}
 					autoCapitalize="none"
 					style={styles.input}
-					onChange={this.handleChange}
+					onChangeText={(email) => this.setState({email})}
 					/>
 				<TextInput
 					placeholder="Password"
@@ -58,6 +87,7 @@ export default class LoginForm extends React.Component {
 					returnKeyType="go"
 					ref={(input) => this.passwordInput = input}
 					style={styles.input}
+					onChangeText={(password) => this.setState({password})}
 					/>
 				
 				<TouchableOpacity 

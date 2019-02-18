@@ -1,8 +1,9 @@
-import Login from "./Login"
-import Splash from "./Splash"
-
-
-import {createStackNavigator, createAppContainer} from "react-navigation"
+import Login from "./Login";
+import Splash from "./Splash";
+import Test from "./Test";
+import LoginForm from "./LoginForm";
+import Gateway from "./Gateway";
+import {createStackNavigator, createAppContainer} from "react-navigation";
 
 const AppNavigator = createStackNavigator({
     // Screens
@@ -12,9 +13,18 @@ const AppNavigator = createStackNavigator({
     Login: {
         screen: Login
     },
+    Search: {
+        screen: Test,
+    },
+    LoginForm: {
+        screen: LoginForm
+    },
+    Gateway: {
+        screen: Gateway
+    },
 }, {
     // settings
-    initialRouteName: "Splash"
+    initialRouteName: "Gateway"
 })
 
 export default createAppContainer(AppNavigator)
