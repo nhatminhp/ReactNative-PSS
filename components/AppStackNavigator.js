@@ -1,6 +1,6 @@
 import Login from "./Login";
 import Splash from "./Splash";
-import Test from "./Test";
+import Search from "./Search";
 import LoginForm from "./LoginForm";
 import Gateway from "./Gateway";
 import Signup from './Signup';
@@ -15,7 +15,7 @@ const AppNavigator = createStackNavigator({
         screen: Login
     },
     Search: {
-        screen: Test,
+        screen: Search,
     },
     LoginForm: {
         screen: LoginForm
