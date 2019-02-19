@@ -11,6 +11,8 @@
     "react-native": "0.58.4",
     "react-native-elements": "^1.0.0",
     "react-native-gesture-handler": "^1.0.15",
+    "react-native-material-dropdown": "^0.11.1",
+    "react-native-material-textfield": "^0.12.0",
     "react-native-search-bar": "^3.4.2",
     "react-native-search-box-custom": "0.0.13",
     "react-native-shared-preferences": "^1.0.0",
