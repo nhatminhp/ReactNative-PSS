@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, TextInput, Alert, AsyncStorage } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, Alert, AsyncStorage, Dimensions } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { getUserInfo } from '../../services/FetchLogin';
 import {createStackNavigator} from 'react-navigation';
 
+var {height, width} = Dimensions.get('window')
 export default class LoginForm extends React.Component {
 
 	constructor(props) {

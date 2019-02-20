@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, Image, View, StyleSheet, TouchableOpacity, TextInput, Alert, KeyboardAvoidingView} from 'react-native';
+import { Text, Image, View, StyleSheet, TouchableOpacity, TextInput, Alert, KeyboardAvoidingView, Dimensions} from 'react-native';
 
+var {height, width} = Dimensions.get('window')
 export default class Signup extends React.Component {
     constructor(props) {
         super(props);
@@ -131,19 +132,21 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white'
 	},
 	logoContainer: {
-        flex: 2,
+        flex: 1,
+        height: height/3,
 		borderRadius: 6,
 		alignItems: 'center',
 		flexGrow: 1,
 		justifyContent: 'center'
     },
     inputContainer: {
-        flex: 1,
+        // flex: 1,
+        height: 2*height/3,
         // backgroundColor: 'red',
         borderRadius: 6,
 		alignItems: 'center',
 		flexGrow: 1,
-		// justifyContent: 'center'
+		justifyContent: 'center'
     },
 	logo: {
 		width: 200,

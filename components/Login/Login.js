@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, KeyboardAvoidingView } from 'react-native';
+import { Text, View, StyleSheet, Image, KeyboardAvoidingView, Dimensions } from 'react-native';
 import LoginForm from './LoginForm';
 
+var {height, width} = Dimensions.get('window')
 export default class Login extends React.Component {
 	static navigationOptions = {
 		header: null,
@@ -31,13 +32,22 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white'
 	},
 	logoContainer: {
+		height: height/3,
 		borderRadius: 6,
 		alignItems: 'center',
 		flexGrow: 1,
-		justifyContent: 'center'
+		// justifyContent: 'center',
 	},
 	logo: {
+		marginTop: height/6,
 		width: 200,
 		height: 200
+	},
+	formContainer: {
+		height: 2*height/3,
+		borderRadius: 6,
+		// alignItems: 'center',
+		// flexGrow: 1,
+		justifyContent: 'center'
 	},
 });
