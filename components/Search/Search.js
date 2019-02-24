@@ -5,6 +5,8 @@ import MultiSelect from 'react-native-multiple-select';
 import { TextField } from 'react-native-material-textfield';
 import { Dropdown } from 'react-native-material-dropdown';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import {Header, Icon} from 'react-native-elements';
+import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 
 export default class Search extends React.Component {
 	static navigationOptions = {
@@ -66,13 +68,28 @@ export default class Search extends React.Component {
         }
         this.onSelectedIngredientsChange = this.onSelectedIngredientsChange.bind(this);
         this.test = this.test.bind(this);
+        this.setMenuRef = this.setMenuRef.bind(this);
+        this.hideMenu = this.hideMenu.bind(this);
+        this.showMenu = this.showMenu.bind(this);
     }
+    setMenuRef = ref => {
+        this._menu = ref;
+    };
+
+    hideMenu = () => {
+        this._menu.hide();
+    };
+
+    showMenu = () => {
+        this._menu.show();
+    };
     test(SelectedIngredients) {
-        let a='';
-        for(var i=0,j=this.state.SelectedIngredients.length;i<j;i++){
-            a+=this.state.SelectedIngredients[i];
-        }
-        Alert.alert(a+this.state.SelectedCategory+this.state.keyword);
+        this.props.navigation.navigate('SearchResult');
+//        let a='';
+//        for(var i=0,j=this.state.SelectedIngredients.length;i<j;i++){
+//            a+=this.state.SelectedIngredients[i];
+//        }
+//        Alert.alert(a+this.state.SelectedCategory+this.state.keyword);
     }
     onSelectedIngredientsChange(SelectedIngredients) {
         this.setState({ SelectedIngredients });
@@ -81,7 +98,19 @@ export default class Search extends React.Component {
     return (
       <KeyboardAwareScrollView behavior="padding" style={styles.container}>
         <View style={styles.listOptions}>
-            <View style={styles.marginTop}></View>
+            <View style={styles.logoContainer}>
+                <Header
+                    leftComponent={{ icon: 'home', color: '#fff',onPress: ()=>this.props.navigation.navigate('Gateway') }}
+                    centerComponent={{text:'SEARCH',style:{color:'#FFF',fontSize:20}}}
+                    rightComponent={<Menu
+                                          ref={this.setMenuRef}
+                                          button={<Icon name='menu' onPress={this.showMenu}/>}
+                                        >
+                                          <MenuItem onPress={this.hideMenu}>Home</MenuItem>
+                                          <MenuItem onPress={this.hideMenu}>Log out</MenuItem>
+                                    </Menu>}
+                />
+            </View>
             <View style={[styles.keyword, styles.searchOption]}>
                 <TextField
                     label="Keyword"
@@ -139,6 +168,20 @@ export default class Search extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    logoContainer: {
+		backgroundColor: 'white',
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: 40,
+		marginBottom: 12
+	},
+	logoContainer: {
+		backgroundColor: 'white',
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: 40,
+		marginBottom: 12
+	},
 	container: {
 		flex: 1,
 	},
