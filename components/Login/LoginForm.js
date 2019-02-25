@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, TextInput, Alert, AsyncStorage, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, Alert, AsyncStorage } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { getUserInfo } from '../../services/FetchLogin';
 import {createStackNavigator} from 'react-navigation';
 
-var {height, width} = Dimensions.get('window')
 export default class LoginForm extends React.Component {
 
 	constructor(props) {
@@ -30,27 +29,28 @@ export default class LoginForm extends React.Component {
 	}
 
 	async handleSubmit() {
-		fetch('http://wonderdance-interaction.duckdns.org/comment', {
+		fetch('http://127.0.0.1:3000/api/users/login', {
                       method: 'POST',
                       headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                       },
                       body: JSON.stringify({
-        //                email: email,
-        //                password: password,
-                          user_id: 1,
-                          video_id: 1,
-                          data: {
-                                content: '123'
-                          },
+                       email: this.state.email,
+                       password: this.state.password,
+                          // user_id: 1,
+                          // video_id: 1,
+                          // data: {
+                          //       content: '123'
+                          // },
                       })
                     }).then((response) => response.json())
                             .then((responseJson) => {
-                                AsyncStorage.multiSet([
-                                  ["token", responseJson.comment_id.toString()],
-                                ])
-                                this.props.navigation.navigate('Gateway')
+                                // AsyncStorage.multiSet([
+                                //   ["token", responseJson.comment_id.toString()],
+																// ])
+																Alert.alert(responseJson);
+                                // this.props.navigation.navigate('Gateway')
                             })
                             .catch((error) => {
                               return Alert.alert(error);

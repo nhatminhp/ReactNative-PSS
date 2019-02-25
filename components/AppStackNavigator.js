@@ -28,7 +28,7 @@ const AppNavigator = createStackNavigator({
     }
 }, {
     // settings
-    initialRouteName: "Search"
+    initialRouteName: "Splash"
 })
 
 export default createAppContainer(AppNavigator)
