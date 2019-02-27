@@ -4,6 +4,7 @@ import Search from "./Search/Search";
 import LoginForm from "./Login/LoginForm";
 import Gateway from "./Gateway/Gateway";
 import Signup from './Signup/Signup';
+import SearchResult from './Search/SearchResult'
 import {createStackNavigator, createAppContainer} from "react-navigation";
 
 const AppNavigator = createStackNavigator({
@@ -25,6 +26,9 @@ const AppNavigator = createStackNavigator({
     },
     Signup: {
         screen: Signup
+    },
+    SearchResult: {
+        screen: SearchResult
     }
 }, {
     // settings

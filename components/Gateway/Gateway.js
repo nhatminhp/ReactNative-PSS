@@ -1,5 +1,8 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
+import {Header, Icon} from 'react-native-elements';
+import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
+
 export default class Gateway extends React.Component {
 	static navigationOptions = {
 		header: null,
@@ -8,11 +11,37 @@ export default class Gateway extends React.Component {
     	super(props);
     	this.state = {
         }
+
+        this.setMenuRef = this.setMenuRef.bind(this);
+        this.hideMenu = this.hideMenu.bind(this);
+        this.showMenu = this.showMenu.bind(this);
     }
+    setMenuRef = ref => {
+        this._menu = ref;
+    };
+
+    hideMenu = () => {
+        this._menu.hide();
+    };
+
+    showMenu = () => {
+        this._menu.show();
+    };
   render() {
     return (
           <KeyboardAvoidingView behavior="padding" style={styles.container}>
               <View style={styles.container}>
+                  <View style={styles.logoContainer}>
+                      <Header
+                          centerComponent={{text:'HOME',style:{color:'#FFF',fontSize:20}}}
+                          rightComponent={<Menu
+                                            ref={this.setMenuRef}
+                                            button={<Icon name='menu' onPress={this.showMenu}/>}
+                                          >
+                                            <MenuItem onPress={this.hideMenu}>Log out</MenuItem>
+                                          </Menu>}
+                      />
+                  </View>
                   <View style={styles.searchRoute}>
                         <TouchableOpacity style={styles.searchButton} onPress={ () => this.props.navigation.navigate('Search')}>
                             <Text>
@@ -36,6 +65,13 @@ export default class Gateway extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    logoContainer: {
+		backgroundColor: 'white',
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: 40,
+		marginBottom: 12
+	},
     searchButton: {
         backgroundColor: '#52E8FF',
         padding:20,
@@ -66,14 +102,6 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 //		backgroundColor: 'blue'
-	},
-	logoContainer: {
-//		borderRadius: 6,
-//		alignItems: 'center',
-		flex: 1,
-//		justifyContent: 'center',
-//		backgroundColor: 'red',
-		flexDirection: 'row'
 	},
 	title: {
         color: '#ffffff',
