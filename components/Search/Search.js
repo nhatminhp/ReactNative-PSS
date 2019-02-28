@@ -23,7 +23,7 @@ export default class Search extends React.Component {
               }, {
                 value: 'Main disk',
               }, {
-                value: 'Desert',
+                value: 'Dessert',
               }],
             ingredients:[{
                           id: 'Egg',
@@ -139,7 +139,7 @@ export default class Search extends React.Component {
                       selectText="Select Ingredients"
                       searchInputPlaceholderText="Search Ingredients..."
                       onChangeInput={ (text)=> console.log(text)}
-                      altFontFamily="ProximaNova-Light"
+                      // altFontFamily="Slab Serif"
                       tagRemoveIconColor="#CCC"
                       tagBorderColor="#CCC"
                       tagTextColor="#CCC"
@@ -149,7 +149,7 @@ export default class Search extends React.Component {
                       displayKey="name"
                       searchInputStyle={{ color: '#CCC' }}
                       hideSubmitButton={true}
-                      fontFamily="Slab Serif"
+                      // fontFamily="Slab Serif"
                       fontSize={17}
                       textColor="black"
                 />
@@ -158,7 +158,7 @@ export default class Search extends React.Component {
         <View style={styles.searchButton}>
             <TouchableOpacity style={styles.button} onPress={()=>this.test()}>
                 <Text>
-                    Search a recipe
+                    Search for recipe
                 </Text>
             </TouchableOpacity>
         </View>

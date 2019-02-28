@@ -36,7 +36,7 @@ const AppNavigator = createStackNavigator({
     }
 }, {
     // settings
-    initialRouteName: "DetailRecipe"
+    initialRouteName: "Splash"
 })
 
 export default createAppContainer(AppNavigator)

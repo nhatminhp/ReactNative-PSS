@@ -3,6 +3,9 @@ import { Text, Image, View, StyleSheet, TouchableOpacity, TextInput, Alert, Keyb
 
 var {height, width} = Dimensions.get('window')
 export default class Signup extends React.Component {
+    // static navigationOptions = {
+    //     header: null,
+    // }
     constructor(props) {
         super(props);
         this.state = {
