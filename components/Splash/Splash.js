@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Text, View, StyleSheet, Image, Animated, Dimensions } from 'react-native';
+import { Text, View, StyleSheet, Image, Animated, Dimensions, Alert, AsyncStorage } from 'react-native';
 
 var {height, width} = Dimensions.get('window')
 export default class Spash extends Component {
@@ -23,7 +23,19 @@ export default class Spash extends Component {
             })
         ]).start(() => {
             //End of animation
-            this.props.navigation.navigate("Login")
+            try {
+                   let value = AsyncStorage.getItem('token').then((value1) => {
+                   if (value1 != null){
+                        this.props.navigation.navigate('Gateway');
+                   }
+                   else {
+                        this.props.navigation.navigate("Login");
+                  }
+                   });
+                } catch (error) {
+                    Alert.alert(error.toString())
+                }
+
         })
     }
     
