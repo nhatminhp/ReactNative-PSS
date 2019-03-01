@@ -108,13 +108,15 @@ export default class SearchResult extends React.Component {
                 <View style={styles.time}>
                     <Text style={styles.lightBold}>Cooking time: {this.state.time}</Text>
                 </View>
-                <View style={styles.ingredientsList}>
+                <View style={styles.ingredientsList} adjustsFontSizeToFit minimumFontScale={.5} allowFontScaling>
                     <Text style={styles.ingredientsTitle}>
                         Ingredients
                     </Text>
-                    <Table borderStyle={{borderWidth: 0, borderColor: '#ffffff'}} >
-                          <Rows data={this.state.ingredientsList} widthArr={[60,60,200]} textStyle={styles.text}/>
+                    <Table style={{paddingLeft:10}} borderStyle={{borderWidth: 0, borderColor: '#ffffff'}} >
+                          <Rows data={this.state.ingredientsList} widthArr={[40,30,200]} textStyle={styles.text}/>
                     </Table>
+                </View>
+                <View style={styles.steps}>
                 </View>
             </View>
       </ScrollView>
@@ -177,7 +179,7 @@ const styles = StyleSheet.create({
 	    paddingLeft: 15
 	},
 	ingredientsList: {
-	    height: 80,
+//	    height: 80,
 	    backgroundColor: 'white'
 	},
 	recipeImage: {
@@ -196,5 +198,7 @@ const styles = StyleSheet.create({
 	    fontSize: 20,
 	    paddingLeft: 15
 	},
-	centerText: {textAlign: 'center'}
+	centerText: {textAlign: 'center'},
+	steps: {
+	}
 });
