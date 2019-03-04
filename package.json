@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.6.3",
     "react-native": "^0.58.5",
+    "react-native-dialog-component": "^0.2.17",
     "react-native-elements": "^1.0.0",
     "react-native-gesture-handler": "^1.0.16",
     "react-native-keyboard-aware-scroll-view": "^0.8.0",
@@ -16,10 +17,13 @@
     "react-native-material-menu": "^0.4.2",
     "react-native-material-textfield": "^0.12.0",
     "react-native-multiple-select": "^0.4.4",
+    "react-native-popup-dialog": "^0.17.0",
+    "react-native-progress-steps": "^1.2.4",
     "react-native-search-bar": "^3.4.2",
     "react-native-search-box-custom": "0.0.13",
     "react-native-shared-preferences": "^1.0.0",
     "react-native-star-rating": "^1.1.0",
+    "react-native-step-indicator": "0.0.9",
     "react-native-table-component": "^1.2.0",
     "react-native-vector-icons": "^6.3.0",
     "react-navigation": "^3.2.1"

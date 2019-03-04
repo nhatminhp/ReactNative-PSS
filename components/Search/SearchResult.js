@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, KeyboardAvoidingView, TextInput } from 'react-native';
+import { Text, View, StyleSheet, Image, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Dropdown } from 'react-native-material-dropdown';
 import {Header, Icon} from 'react-native-elements';
@@ -47,7 +47,7 @@ export default class SearchResult extends React.Component {
             centerComponent={{text:'SEARCH RESULT',style:{color:'#FFF',fontSize:20}}}
             rightComponent={<Menu
                                       ref={this.setMenuRef}
-                                      button={<Icon name='menu' onPress={this.showMenu}/>}
+                                      button={<Icon name='menu' color='white' onPress={this.showMenu}/>}
                                     >
                                       <MenuItem onPress={this.hideMenu}>Home</MenuItem>
                                       <MenuItem onPress={this.hideMenu}>Log out</MenuItem>
@@ -56,29 +56,29 @@ export default class SearchResult extends React.Component {
         />
 	  </View>
         <View style={styles.formContainer}>
-            <View style={styles.recipes}>
+            <TouchableOpacity style={styles.recipes} onPress={() => this.props.navigation.navigate('DetailRecipe')}>
                 <Image style={styles.picture} source={{uri: 'https://www.tasteofhome.com/wp-content/uploads/2017/10/Healthier-than-Egg-Rolls_EXPS_SDON17_55166_C06_23_6b-696x696.jpg'}}/>
                 <View style={styles.info}>
                     <View style={styles.name}><Text style={styles.nameText}>Recipe1</Text></View>
                     <View style={styles.description}><Text style={styles.descriptionText}>Description1</Text></View>
                  </View>
 
-            </View>
-            <View style={styles.recipes}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.recipes}>
                 <Image style={styles.picture} source={{uri: 'https://www.tasteofhome.com/wp-content/uploads/2017/10/Healthier-than-Egg-Rolls_EXPS_SDON17_55166_C06_23_6b-696x696.jpg'}}/>
                 <View style={styles.info}>
                     <View style={styles.name}><Text style={styles.nameText}>Recipe1</Text></View>
                     <View style={styles.description}><Text style={styles.descriptionText}>Description1</Text></View>
                  </View>
 
-            </View>
-            <View style={styles.recipes}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.recipes}>
                 <Image style={styles.picture} source={{uri: 'https://www.tasteofhome.com/wp-content/uploads/2017/10/Healthier-than-Egg-Rolls_EXPS_SDON17_55166_C06_23_6b-696x696.jpg'}}/>
                 <View style={styles.info}>
                     <View style={styles.name}><Text style={styles.nameText}>Recipe1</Text></View>
                     <View style={styles.description}><Text style={styles.descriptionText}>Description1</Text></View>
                  </View>
-            </View>
+            </TouchableOpacity>
         </View>
       </KeyboardAwareScrollView>
     );
