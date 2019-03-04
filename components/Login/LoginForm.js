@@ -29,32 +29,26 @@ export default class LoginForm extends React.Component {
 	}
 
 	async handleSubmit() {
-		fetch('http://127.0.0.1:3000/api/users/login', {
-                      method: 'POST',
-                      headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                      },
-                      body: JSON.stringify({
-                       email: this.state.email,
-                       password: this.state.password,
-                          // user_id: 1,
-                          // video_id: 1,
-                          // data: {
-                          //       content: '123'
-                          // },
-                      })
-                    }).then((response) => response.json())
-                            .then((responseJson) => {
-                                // AsyncStorage.multiSet([
-                                //   ["token", responseJson.comment_id.toString()],
-																// ])
-																Alert.alert(responseJson);
-                                // this.props.navigation.navigate('Gateway')
-                            })
-                            .catch((error) => {
-                              return Alert.alert(error);
-                            });
+		fetch('http://10.0.2.2:3000/api/users/login', {
+                  method: 'POST',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                        email: this.state.email,
+                        password: this.state.password,
+                  })
+        }).then((response) => response.json())
+                  .then((responseJson) => {
+                     AsyncStorage.multiSet([
+                       ["token", responseJson.id.toString()],
+                                                     ])
+                    this.props.navigation.navigate('Gateway')
+                })
+                .catch((error) => {
+                    return Alert.alert('wrong email or password');
+                });
 	}
 	
 

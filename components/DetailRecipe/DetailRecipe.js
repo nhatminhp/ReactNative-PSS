@@ -1,13 +1,35 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, ScrollView, TextInput,Dimensions } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, TextInput,Dimensions,FlatList,TouchableOpacity } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Dropdown } from 'react-native-material-dropdown';
 import {Header, Icon} from 'react-native-elements';
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import StarRating from 'react-native-star-rating';
 import { Table, Row, Rows } from 'react-native-table-component';
+import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 
-var {height, width} = Dimensions.get('window')
+const labels = ["Cart","Delivery Address","Order Summary","Payment Method","Track"];
+const stepIndicatorStyles = {
+  stepIndicatorSize: 30,
+  currentStepIndicatorSize:30,
+  separatorStrokeWidth: 3,
+  currentStepStrokeWidth: 3,
+  stepStrokeCurrentColor: '#fe7013',
+  separatorFinishedColor: '#fe7013',
+  separatorUnFinishedColor: '#fe7013',
+  stepIndicatorFinishedColor: '#fe7013',
+  stepIndicatorUnFinishedColor: '#fe7013',
+  stepIndicatorCurrentColor: '#fe7013',
+  stepIndicatorLabelFontSize: 15,
+  currentStepIndicatorLabelFontSize: 15,
+  stepIndicatorLabelCurrentColor: '#ffffff',
+  stepIndicatorLabelFinishedColor: '#ffffff',
+  stepIndicatorLabelUnFinishedColor: '#ffffff',
+  labelColor: '#666666',
+  labelSize: 15,
+  currentStepLabelColor: '#666666'
+}
+var {height, width} = Dimensions.get('window');
 export default class SearchResult extends React.Component {
 	static navigationOptions = {
 		header: null,
@@ -41,12 +63,30 @@ export default class SearchResult extends React.Component {
     	            'kg',
     	            'bacon',
     	        ]
-    	    ]
+    	    ],
+    	    steps: [
+    	        {
+                    'title': 'step 1',
+                    'body': 'add eggadd eggadd eggadd eggadd eggadd egg'
+    	        },{
+                    'title': 'step 2',
+                    'body': 'add floweradd floweradd floweradd floweradd floweradd flower'
+    	        },{
+                    'title': 'step 3',
+                    'body': 'add fish sauceadd fish sauceadd fish sauceadd fish sauceadd fish sauce'
+    	        },{
+                      'title': 'step 4',
+                      'body': 'add fish sauceadd fish sauceadd fish sauceadd fish sauceadd fish sauce'
+                },
+    	    ],
+
         }
+        this.viewabilityConfig = {itemVisiblePercentThreshold: 40}
+
         this.setMenuRef = this.setMenuRef.bind(this);
         this.hideMenu = this.hideMenu.bind(this);
         this.showMenu = this.showMenu.bind(this);
-
+        this.renderPage = this.renderPage.bind(this);
     }
       setMenuRef = ref => {
         this._menu = ref;
@@ -60,6 +100,19 @@ export default class SearchResult extends React.Component {
         this._menu.show();
       };
 
+
+  renderPage = (rowData) => {
+    const item = rowData.item
+    return (
+      <View style={styles.rowItem}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.body}>{item.body}</Text>
+      </View>
+    )
+  }
+
+
+
   render() {
     return (
       <ScrollView behavior="padding" style={styles.container}>
@@ -69,7 +122,7 @@ export default class SearchResult extends React.Component {
                     centerComponent={{text:'SEARCH RESULT',style:{color:'#FFF',fontSize:20}}}
                     rightComponent={<Menu
                                           ref={this.setMenuRef}
-                                          button={<Icon name='menu' onPress={this.showMenu}/>}
+                                          button={<Icon name='menu' color='white' onPress={this.showMenu}/>}
                                         >
                                           <MenuItem onPress={this.hideMenu}>Home</MenuItem>
                                           <MenuItem onPress={this.hideMenu}>Log out</MenuItem>
@@ -86,18 +139,18 @@ export default class SearchResult extends React.Component {
                     <Text style={styles.category}>{this.state.category}</Text>
                     <View style={styles.starView}>
                         <StarRating
-                                disabled={true}
-                                emptyStar={'ios-star-outline'}
-                                fullStar={'ios-star'}
-                                halfStar={'ios-star-half'}
-                                iconSet={'Ionicons'}
-                                maxStars={5}
-                                rating={4}
-                                starSize={20}
-    //                            selectedStar={(rating) => this.onStarRatingPress(rating)}
-                                fullStarColor={'#ff7e1a'}
-                                style={styles.stars}
-                              />
+                            disabled={true}
+                            emptyStar={'ios-star-outline'}
+                            fullStar={'ios-star'}
+                            halfStar={'ios-star-half'}
+                            iconSet={'Ionicons'}
+                            maxStars={5}
+                            rating={4}
+                            starSize={20}
+//                            selectedStar={(rating) => this.onStarRatingPress(rating)}
+                            fullStarColor={'#ff7e1a'}
+                            style={styles.stars}
+                            />
                     </View>
                 </View>
                 <View style={styles.description}>
@@ -117,8 +170,31 @@ export default class SearchResult extends React.Component {
                     </Table>
                 </View>
                 <View style={styles.steps}>
+                    <Text style={styles.ingredientsTitle}>
+                        Steps
+                    </Text>
+                    <ProgressSteps>
+                        <ProgressStep label="First Step">
+                            <View style={{ alignItems: 'center' }}>
+                                <Text>This is the content within step 1!</Text>
+                            </View>
+                        </ProgressStep>
+                        <ProgressStep label="Second Step">
+                            <View style={{ alignItems: 'center' }}>
+                                <Text>This is the content within step 2!</Text>
+                            </View>
+                        </ProgressStep>
+                        <ProgressStep label="Third Step" finishBtnText=''>
+                            <View style={{ alignItems: 'center' }}>
+                                <Text>This is the content within step 3!</Text>
+                            </View>
+                        </ProgressStep>
+                    </ProgressSteps>
                 </View>
             </View>
+            <TouchableOpacity style={styles.listReview} onPress={()=>this.props.navigation.navigate('Reviews')}>
+                <Text style={{color: 'white'}} >Reviews</Text>
+            </TouchableOpacity>
       </ScrollView>
     );
   }
@@ -200,5 +276,11 @@ const styles = StyleSheet.create({
 	},
 	centerText: {textAlign: 'center'},
 	steps: {
-	}
+	},
+	listReview:{
+	    alignItems: 'center',
+	    backgroundColor: '#5e9af9',
+	    paddingBottom: 20,
+	    paddingTop: 20,
+	},
 });

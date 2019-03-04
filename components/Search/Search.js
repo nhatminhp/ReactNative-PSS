@@ -104,7 +104,7 @@ export default class Search extends React.Component {
                     centerComponent={{text:'SEARCH',style:{color:'#FFF',fontSize:20}}}
                     rightComponent={<Menu
                                           ref={this.setMenuRef}
-                                          button={<Icon name='menu' onPress={this.showMenu}/>}
+                                          button={<Icon name='menu' color='white' onPress={this.showMenu}/>}
                                         >
                                           <MenuItem onPress={this.hideMenu}>Home</MenuItem>
                                           <MenuItem onPress={this.hideMenu}>Log out</MenuItem>
